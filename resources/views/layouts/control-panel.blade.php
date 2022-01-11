@@ -192,6 +192,20 @@
                     </li>
 
                     <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                            <i class="la la-building"></i>
+                            <span class="nav-text">{{ __('Multi Media') }}</span>
+                        </a>
+                        <ul aria-expanded="false">
+                            {{-- this element to view all services page --}}
+                            <li><a href="{{ route('photo-album.index') }}">{{ __('Photo Album') }}</a></li>
+
+                            {{-- this element to view all services page --}}
+                            <li><a href="{{ route('vedio-album.index') }}">{{ __('Vedio Album') }}</a></li>
+
+                        </ul>
+                    </li>
+
+                    <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">
                             <i class="la la-calendar"></i>
                             <span class="nav-text">{{ __('Projects') }}</span>
                         </a>

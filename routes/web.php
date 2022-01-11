@@ -6,12 +6,14 @@ use App\Http\Controllers\ControlPanel\ContactController as ControlPanelContactCo
 use App\Http\Controllers\ControlPanel\DashboardController;
 use App\Http\Controllers\ControlPanel\OrderController as ControlPanelOrderController;
 use App\Http\Controllers\ControlPanel\PageController;
+use App\Http\Controllers\ControlPanel\PhotoAlbumController;
 use App\Http\Controllers\ControlPanel\PlanController;
 use App\Http\Controllers\ControlPanel\ProjectController;
 use App\Http\Controllers\ControlPanel\SubServiceController;
 use App\Http\Controllers\ControlPanel\TeamController;
 use App\Http\Controllers\ControlPanel\UserController;
 use App\Http\Controllers\ControlPanel\SliderController;
+use App\Http\Controllers\ControlPanel\VedioAlbumController;
 use App\Http\Controllers\ControlPanel\WebsitController;
 use App\Http\Controllers\Front\ContactController;
 use App\Http\Controllers\Front\OrderController;
@@ -46,7 +48,7 @@ Route::middleware('auth')
         ->prefix('control-panel')
         ->group(function () {
             Route::get('/dashboard', [DashboardController::class,'index'])->name('dashboard');
-git commit -m "new commit"
+
             Route::get('users', [UserController::class, 'index'])->name('all-users');
             Route::get('users/create', [UserController::class, 'create'])->name('create-users');
             Route::post('users/create', [UserController::class, 'store'])->name('store-users');
@@ -70,6 +72,10 @@ git commit -m "new commit"
             Route::delete('contacts/{contact}',[ControlPanelContactController::class,'destroy'])->name('contacts.destroy');
             Route::resource('sliders', SliderController::class);
 
+            Route::resource('photo-album',PhotoAlbumController::class);
+            Route::put('photo-album/{photo_album}/photos',[PhotoAlbumController::class,'updatePhotos'])->name('photo-album.updatePhotos');
+            Route::resource('vedio-album',VedioAlbumController::class);
+            
             Route::get('plans/{service}',[PlanController::class,'show'])->name('plans.show');
             Route::get('plans/create/{service}',[PlanController::class,'create'])->name('plans.create');
             Route::post('plans/create',[PlanController::class,'store'])->name('plans.store');
@@ -93,4 +99,4 @@ git commit -m "new commit"
 //         Route::post('new-order',[OrderController::class,'store'])->name('new.order');
 //     });
 
-req
+require __DIR__.'/auth.php';
